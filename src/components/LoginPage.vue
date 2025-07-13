@@ -29,7 +29,7 @@
         <!-- 验证码 -->
         <input
           v-model="code"
-          type="text"
+          type="password"
           placeholder="密码"
           class="w-full mb-4 px-4 py-3 border rounded focus:outline-none focus:ring focus:border-blue-400"
         />
@@ -109,9 +109,12 @@ const register = async () => {
 
     // 暂时将验证结果设为true
     const isValid = result.isValid
+    const user_id = result.user_id
 
     if (isValid) {
       console.log('succuss,前后端连通')
+      localStorage.setItem('isLoggedIn', 'true')
+      localStorage.setItem('user_id', user_id)
       // 如果验证成功，跳转到首页
       router.push('/home')
     } else {
