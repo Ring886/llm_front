@@ -3,6 +3,16 @@
     <!-- 左侧导航栏 -->
     <nav class="w-64 bg-white border-r flex flex-col">
       <div class="p-4 font-semibold text-lg border-b">系统导航</div>
+
+      <!-- 新建会话 -->
+      <li
+        class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-green-600 font-medium border-t mt-4"
+        @click="startNewSession"
+      >
+        + 新建会话
+      </li>
+
+
       <ul class="flex-1 overflow-auto">
         <!-- 功能菜单 -->
         <li
@@ -54,6 +64,10 @@
           医院导航和科室分布
         </li>
         <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">帮助中心</li>
+
+
+       
+
       </ul>
     </nav>
 
@@ -105,6 +119,11 @@
   const goToSession = (sessionId) => {
     router.push({ path: '/home/chat', query: { sessionId } })
   }
+
+  const startNewSession = () => {
+    router.push('/home/chat')
+  }
+
 
 
   // ✅ 页面加载时发起请求

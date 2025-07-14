@@ -120,10 +120,12 @@
 <script setup>
 import { ref } from 'vue'
 import { onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter} from 'vue-router'
 
 
 const route = useRoute()
+const router = useRouter()
+
 const loadingSession = ref(false)
 
 
@@ -132,6 +134,7 @@ const input = ref('')
 const messages = ref([])
 const response = ref('')
 const isResponding = ref(false)
+const session_id = ref('')
 
 /** 发送问题到后端，大模型流式返回 */
 const sendQuestion = async () => {
@@ -145,11 +148,27 @@ const sendQuestion = async () => {
   isResponding.value = true
 
   try {
+    session_id.value = route.query.sessionId
+    const user_id = ref()
+    user_id.value = localStorage.getItem('user_id')
+
+    // 新创建的会话
+    if(!session_id.value) {
+      const res = await fetch('/api/chat/sessions/new', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: user_id.value, initial_message: text})
+      })
+      const data = await res.json()
+      goToSession(data.sessionId)
+      session_id.value = data.sessionId
+    }
     // 2. 调用后端 /api/chat/ask（流式 SSE 或 fetch 流）
+    console.log('session_id:', session_id.value)
     const res = await fetch('/api/chat/ask', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: text })
+      body: JSON.stringify({ question: text, session_id: session_id.value})
     })
 
     // 3. 读取流式分片
@@ -208,15 +227,26 @@ const loadSessionMessages = async (sessionId) => {
 }
 
 
+const goToSession = (sessionId) => {
+  router.push({ path: '/home/chat', query: { sessionId } })
+}
 
 
 
 // 监听 sessionId 变化
 watch(() => route.query.sessionId, async (newSessionId) => {
   if (newSessionId) {
+    // 加载指定 session 的历史消息
     await loadSessionMessages(newSessionId)
+  } else {
+    // 是新建会话，清空消息列表或重置状态
+    messages.value = []     // 你实际的消息数组变量名
+    response.value = ''     // 如果你还有流式回复状态
+    session_id.value = ''   // 清空当前 session_id
+    console.log('新建会话，消息已清空')
   }
 })
+
 
 // 页面首次加载
 onMounted(() => {
