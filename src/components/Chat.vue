@@ -68,7 +68,7 @@
             msg.from === 'user'
               ? 'inline-block bg-blue-500 text-white px-4 py-2 rounded-xl'
               : 'inline-block bg-white border px-4 py-2 rounded-xl text-gray-800'
-          "
+           " class="whitespace-pre-wrap"
         >
           {{ msg.text }}
         </div>
