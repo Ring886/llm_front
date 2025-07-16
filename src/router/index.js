@@ -5,6 +5,8 @@ import RegisterPage from '@/components/RegisterPage.vue'
 import News from '@/components/News.vue'
 import Chat from '@/components/Chat.vue'
 import Map from '@/components/Map.vue'
+import Medicine from '@/components/Medicine.vue'
+import Feedback from '@/components/Feedback.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -24,6 +26,14 @@ const routes = [
       {
         path: 'map',
         component: Map
+      },
+      {
+        path: 'medicine',
+        component: Medicine
+      },
+      {
+        path: 'Feedback',
+        component: Feedback
       },
       {
         path: '',

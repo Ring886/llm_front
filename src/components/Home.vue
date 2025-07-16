@@ -19,7 +19,7 @@
           class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
           @click="$router.push('/home/chat')"
         >
-          功能菜单
+          欢迎
         </li>
 
         <!-- 历史会话折叠区域 -->
@@ -56,14 +56,21 @@
         </li>
 
         <!-- 其他菜单 -->
-        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">药品管理</li>
+        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+          @click="$router.push('/home/medicine')">
+          药品信息
+        </li>
         <li
           class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
           @click="$router.push('/home/map')"
         >
           医院导航和科室分布
         </li>
-        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">帮助中心</li>
+        <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+          @click="$router.push('/home/feedback')"
+        >
+          吐槽一下
+        </li>
 
 
        

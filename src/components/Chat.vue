@@ -24,17 +24,17 @@
           class="flex flex-col items-center text-center max-w-2xl mx-auto text-gray-700"
         >
           <img
-            src="@/assets/tiktok.png"
+            src="@/assets/tanya.ico"
             alt="头像"
             class="w-20 h-20 rounded-full mb-4"
           />
-          <h1 class="text-3xl font-bold mb-2">医院智能问答系统</h1>
-          <p class="text-lg mb-6">
+          <h1 class="text-3xl font-bold mb-2">MedMagi医童</h1>
+          <p class="text-lg mt-6">
             提供自然语言问答交流，展示 AI 回复与用户提问，多轮对话超便捷！
           </p>
 
           <!-- 推荐按钮组 -->
-          <div class="flex flex-col space-y-3 w-full max-w-sm">
+          <!-- <div class="flex flex-col space-y-3 w-full max-w-sm">
             <button class="py-2 px-4 border rounded hover:bg-gray-200">
               常见问题提示词
             </button>
@@ -53,7 +53,7 @@
             >
               换一批
             </a>
-          </div>
+          </div> -->
         </div>
       </div>
 

@@ -7,20 +7,20 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- 医院导航图 -->
       <div class="bg-white rounded-xl shadow p-4">
-        <h2 class="text-lg font-medium text-gray-700 mb-2">导航总览</h2>
+        <h2 class="text-lg font-medium text-gray-700 mb-2">医院平面图</h2>
         <img
-          src="@/assets/navigation.png"
-          alt="医院导航图"
+          src="@/assets/医院平面图.png"
+          alt="医院平面图"
           class="w-full h-auto rounded-md border"
         />
       </div>
 
       <!-- 医院地图 -->
       <div class="bg-white rounded-xl shadow p-4">
-        <h2 class="text-lg font-medium text-gray-700 mb-2">医院平面图</h2>
+        <h2 class="text-lg font-medium text-gray-700 mb-2">科室分布</h2>
         <img
-          src="@/assets/map.png"
-          alt="医院地图"
+          src="@/assets/科室分布图.png"
+          alt="科室分布"
           class="w-full h-auto rounded-md border"
         />
       </div>
